@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Värd: 127.0.0.1
--- Tid vid skapande: 21 nov 2023 kl 11:39
+-- Tid vid skapande: 21 nov 2023 kl 13:00
 -- Serverversion: 10.4.21-MariaDB
 -- PHP-version: 8.0.10
 
@@ -24,12 +24,38 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `ja`
+-- Tabellstruktur `student`
 --
 
-CREATE TABLE `ja` (
-  `ja` int(30) NOT NULL
+CREATE TABLE `student` (
+  `StudentID` int(11) NOT NULL,
+  `StudentName` varchar(30) NOT NULL,
+  `Password` varchar(30) NOT NULL,
+  `Email` varchar(30) NOT NULL,
+  `Department name` varchar(30) NOT NULL,
+  `Enrollment date` date NOT NULL,
+  `Total credits` decimal(3,1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Index för dumpade tabeller
+--
+
+--
+-- Index för tabell `student`
+--
+ALTER TABLE `student`
+  ADD PRIMARY KEY (`StudentID`);
+
+--
+-- AUTO_INCREMENT för dumpade tabeller
+--
+
+--
+-- AUTO_INCREMENT för tabell `student`
+--
+ALTER TABLE `student`
+  MODIFY `StudentID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
