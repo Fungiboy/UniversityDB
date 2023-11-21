@@ -65,6 +65,46 @@ CREATE TABLE `student` (
   `Total credits` decimal(3,1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur `Departments`
+--
+
+CREATE TABLE `Departments` (
+  'DepartemntID' int(11) NOT NULL,
+  'DepartmentName' varchar(31) NOT NULL,
+  'ProfessorID' int(11) NOT NULL,
+  'NumberOfCourses' int(11) NOT NULL,
+  'HeadProfessorID' int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur `DepartmentHead`
+--
+
+CREATE TABLE `departmentHead` (
+  'HeadProfessorID' int(11) NOT NULL,
+  'ProfessorID' int(11) NOT NULL,
+  'DepartmentID' int(11) NOT NULL,
+  'CourseName' varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur `DepartmentHead`
+--
+
+CREATE TABLE 'course' (
+  'CourseName' VARCHAR(20) NOT NULL,
+  'ProfessorID' INT(11) NOT NULL,
+  'Credits' DECIMAL(2,1) NOT NULL,
+  'DepartmentID' INT(11) NOT NULL,
+  'Nr_of_Students' INT(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Index för dumpade tabeller
@@ -75,19 +115,45 @@ CREATE TABLE `student` (
 --
 ALTER TABLE `enrollment`
   ADD PRIMARY KEY (`Enrollment ID`),
-  ADD KEY `StudentID` (`StudentID`);
+  ADD FOREIGN KEY (`StudentID`) REFERENCES 'student' ('StudentID');
+  ADD FOREIGN KEY (`CourseName`) REFERENCES 'course' ('CourseName');
 
 --
 -- Index för tabell `professor`
 --
 ALTER TABLE `professor`
   ADD PRIMARY KEY (`Professor ID`);
-
+  ADD FOREIGN KEY (`DepartmentID`) REFERENCES 'Depratments' ('DepartmentID');
 --
 -- Index för tabell `student`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`StudentID`);
+
+--
+-- Index för tabell `student`
+--
+ALTER TABLE `Departments`
+  ADD PRIMARY KEY (`DepartmentID`);
+  ADD FOREIGN KEY (`ProfessorID`) REFERENCES 'professor' ('ProfessorID');
+  ADD FOREIGN KEY (`HeadProfessorID`) REFERENCES 'DepartmentHead' ('HeadProfessorID');
+
+--
+-- Index för tabell `student`
+--
+ALTER TABLE `departmentHead`
+  ADD PRIMARY KEY (`HeadProfessorID`);
+  ADD FOREIGN KEY (`ProfessorID`) REFERENCES 'professor' ('ProfessorID');
+  ADD FOREIGN KEY (`DepartmentID`) REFERENCES 'Department' ('DepartmentID');
+  ADD FOREIGN KEY (`CourseName`) REFERENCES 'course' ('CourseName');
+
+--
+-- Index för tabell `professor`
+--
+ALTER TABLE `course`
+  ADD PRIMARY KEY (`CourseName`);
+  ADD FOREIGN KEY (`ProfessorID`) REFERENCES 'professor' ('ProfessorID');
+  ADD FOREIGN KEY (`CourseName`) REFERENCES 'course' ('CourseName');
 
 --
 -- AUTO_INCREMENT för dumpade tabeller
@@ -97,13 +163,13 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT för tabell `enrollment`
 --
 ALTER TABLE `enrollment`
-  MODIFY `Enrollment ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `EnrollmentID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT för tabell `professor`
 --
 ALTER TABLE `professor`
-  MODIFY `Professor ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ProfessorID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT för tabell `student`
