@@ -38,13 +38,13 @@ CREATE TABLE `professor` (
 
 -- --------------------------------------------------------
 
---
+--kkkkk
 -- Tabellstruktur `student`
 --
 
 CREATE TABLE `student` (
   `StudentID` int(11) NOT NULL,
-  `StudentName` varchar(30) NOT NULL,
+  `StudentName` varchar(31) NOT NULL,
   `Password` varchar(30) NOT NULL,
   `Email` varchar(30) NOT NULL,
   `Department name` varchar(30) NOT NULL,
