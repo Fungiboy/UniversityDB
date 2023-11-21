@@ -65,6 +65,7 @@ CREATE TABLE `student` (
   `Total credits` decimal(3,1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
 --
 -- Index för dumpade tabeller
 --
