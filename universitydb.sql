@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Värd: 127.0.0.1
--- Tid vid skapande: 21 nov 2023 kl 13:00
+-- Tid vid skapande: 21 nov 2023 kl 13:17
 -- Serverversion: 10.4.21-MariaDB
 -- PHP-version: 8.0.10
 
@@ -20,6 +20,21 @@ SET time_zone = "+00:00";
 --
 -- Databas: `universitydb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur `professor`
+--
+
+CREATE TABLE `professor` (
+  `Professor ID` int(11) NOT NULL,
+  `Professor Name` varchar(30) NOT NULL,
+  `Password` varchar(30) NOT NULL,
+  `Email` varchar(30) NOT NULL,
+  `Department ID` int(11) NOT NULL,
+  `Date of hire` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -42,6 +57,12 @@ CREATE TABLE `student` (
 --
 
 --
+-- Index för tabell `professor`
+--
+ALTER TABLE `professor`
+  ADD PRIMARY KEY (`Professor ID`);
+
+--
 -- Index för tabell `student`
 --
 ALTER TABLE `student`
@@ -50,6 +71,12 @@ ALTER TABLE `student`
 --
 -- AUTO_INCREMENT för dumpade tabeller
 --
+
+--
+-- AUTO_INCREMENT för tabell `professor`
+--
+ALTER TABLE `professor`
+  MODIFY `Professor ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT för tabell `student`
