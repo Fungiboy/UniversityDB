@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Värd: 127.0.0.1
--- Tid vid skapande: 21 nov 2023 kl 13:17
+-- Tid vid skapande: 21 nov 2023 kl 14:05
 -- Serverversion: 10.4.21-MariaDB
 -- PHP-version: 8.0.10
 
@@ -24,6 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Tabellstruktur `enrollment`
+--
+
+CREATE TABLE `enrollment` (
+  `Enrollment ID` int(11) NOT NULL,
+  `StudentID` int(11) NOT NULL,
+  `Course Name` varchar(30) NOT NULL,
+  `Enrollment year` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Tabellstruktur `professor`
 --
 
@@ -38,13 +51,13 @@ CREATE TABLE `professor` (
 
 -- --------------------------------------------------------
 
---kkkkk
+--
 -- Tabellstruktur `student`
 --
 
 CREATE TABLE `student` (
   `StudentID` int(11) NOT NULL,
-  `StudentName` varchar(31) NOT NULL,
+  `StudentName` varchar(30) NOT NULL,
   `Password` varchar(30) NOT NULL,
   `Email` varchar(30) NOT NULL,
   `Department name` varchar(30) NOT NULL,
@@ -55,6 +68,13 @@ CREATE TABLE `student` (
 --
 -- Index för dumpade tabeller
 --
+
+--
+-- Index för tabell `enrollment`
+--
+ALTER TABLE `enrollment`
+  ADD PRIMARY KEY (`Enrollment ID`),
+  ADD KEY `StudentID` (`StudentID`);
 
 --
 -- Index för tabell `professor`
@@ -73,6 +93,12 @@ ALTER TABLE `student`
 --
 
 --
+-- AUTO_INCREMENT för tabell `enrollment`
+--
+ALTER TABLE `enrollment`
+  MODIFY `Enrollment ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT för tabell `professor`
 --
 ALTER TABLE `professor`
@@ -83,6 +109,16 @@ ALTER TABLE `professor`
 --
 ALTER TABLE `student`
   MODIFY `StudentID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restriktioner för dumpade tabeller
+--
+
+--
+-- Restriktioner för tabell `enrollment`
+--
+ALTER TABLE `enrollment`
+  ADD CONSTRAINT `FK1` FOREIGN KEY (`StudentID`) REFERENCES `student` (`StudentID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
