@@ -27,12 +27,12 @@ SET time_zone = "+00:00";
 -- Tabellstruktur `enrollment`
 --
 
-CREATE TABLE `enrollment` (
-  `Enrollment ID` int(11) NOT NULL,
-  `StudentID` int(11) NOT NULL,
-  `Course Name` varchar(30) NOT NULL,
-  `Enrollment year` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE 'enrolment' (
+  'EnrolmentID'  INT NOT NULL,
+  'StudentID' INT NOT NULL,
+  'CourseName' VARCHAR(20) NOT NULL,
+  'EnrolmentYear' DATE NOT NULL,
+);
 
 -- --------------------------------------------------------
 
@@ -101,7 +101,7 @@ CREATE TABLE `departmentHead` (
 CREATE TABLE 'course' (
   'CourseName' VARCHAR(20) NOT NULL,
   'ProfessorID' INT(11) NOT NULL,
-  'Credits' DECIMAL(2,1) NOT NULL,
+  'Credits' INT(2,1) NOT NULL,
   'DepartmentID' INT(11) NOT NULL,
   'Nr_of_Students' INT(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -113,8 +113,8 @@ CREATE TABLE 'course' (
 --
 -- Index för tabell `enrollment`
 --
-ALTER TABLE `enrollment`
-  ADD PRIMARY KEY (`Enrollment ID`),
+ALTER TABLE `enrolment`
+  ADD PRIMARY KEY (`Enrolment ID`),
   ADD FOREIGN KEY (`StudentID`) REFERENCES 'student' ('StudentID');
   ADD FOREIGN KEY (`CourseName`) REFERENCES 'course' ('CourseName');
 
@@ -153,12 +153,7 @@ ALTER TABLE `departmentHead`
 ALTER TABLE `course`
   ADD PRIMARY KEY (`CourseName`);
   ADD FOREIGN KEY (`ProfessorID`) REFERENCES 'professor' ('ProfessorID');
-<<<<<<< HEAD
   ADD FOREIGN KEY (`DepartmentID`) REFERENCES 'deparments' ('DepartmentID');
-=======
-  ADD FOREIGN KEY (`DepartmentID`) REFERENCES 'Department' ('DepartmentID');
->>>>>>> 38baef30beef6b39f49f8237fca73e685cb3b2b5
-
 --
 -- AUTO_INCREMENT för dumpade tabeller
 --
@@ -166,8 +161,8 @@ ALTER TABLE `course`
 --
 -- AUTO_INCREMENT för tabell `enrollment`
 --
-ALTER TABLE `enrollment`
-  MODIFY `EnrollmentID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `enrolment`
+  MODIFY `EnrolmentID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT för tabell `professor`
@@ -188,7 +183,7 @@ ALTER TABLE `student`
 --
 -- Restriktioner för tabell `enrollment`
 --
-ALTER TABLE `enrollment`
+ALTER TABLE `enrolment`
   ADD CONSTRAINT `FK1` FOREIGN KEY (`StudentID`) REFERENCES `student` (`StudentID`);
 COMMIT;
 
