@@ -1,6 +1,6 @@
-INSERT IGNORE INTO departmentHead (HeadProfessorID, ProfessorID, DepartmentID, CourseName)
-VALUES 
-    (1, 1 , 1, 'Math'),
-    (2, 2, 2, 'Art'),
-    (3, 3, 3, 'History'),
-    (4, 4, 4, 'English');
+INSERT INTO departmentHead (Head_Professor_ID, Professor_ID, Department_ID)
+VALUES
+    (1, 7, 1),
+    (2, 8, 2),
+    (3, 9, 3),
+    (4, 10, 4);

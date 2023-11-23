@@ -1,14 +1,5 @@
-CREATE TABLE 'course' (
-  'Course_Name' VARCHAR(20) NOT NULL AUTO_INCREMENT,
-  'Professor_ID' INT(11),
-  'Credits' INT(2) NOT NULL,
-  'Department_ID' INT(11),
-  'Nr_of_Students' INT(3),
-  PRIMARY KEY (Course_Name)
-);
-
 -- Inserting courses and theit credits into the table
-INSERT INTO course (CourseName, credits)
+INSERT INTO course (Course_Name, credits)
 VALUES
     ('Biology', 60),
     ('Chemistry', 70),
@@ -23,4 +14,3 @@ VALUES
     ('Film Studies', 45),
     ('Creative writing', 15),
     ('Photography', 25);
-    

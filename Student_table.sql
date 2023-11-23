@@ -1,4 +1,4 @@
-INSERT IGNORE INTO student (StudentID, StudentName, Password, Email, Department_name, Enrollment_date, Total_credits)
+INSERT IGNORE INTO student (Student_ID, Student_Name, Password, Email, Department_name, Enrolment_date, Total_credits)
 VALUES 
     (1, 'John Smith' , 'password123', 'john.smith@example.com', 'department', 2023-08-08, 10),
     (2, 'Emily Johnson', 'pass456', 'emily.johnson@example.com', 'department', 2023-08-08, 10),

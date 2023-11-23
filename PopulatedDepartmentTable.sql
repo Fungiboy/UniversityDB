@@ -1,4 +1,4 @@
-INSERT IGNORE INTO departments (DepartemntID, DepartmentName, ProfessorID, NumberOfCourses, HeadProfessorID)
+INSERT  INTO departments (Department_ID, Department_Name, Professor_ID, Number_Of_Courses, Head_Professor_ID)
 VALUES 
     (1, 'Science' , 1, 4, 1),
     (2, 'Creatives', 2, 4, 2),
