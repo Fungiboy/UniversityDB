@@ -153,7 +153,7 @@ ALTER TABLE `departmentHead`
 ALTER TABLE `course`
   ADD PRIMARY KEY (`CourseName`);
   ADD FOREIGN KEY (`ProfessorID`) REFERENCES 'professor' ('ProfessorID');
-  ADD FOREIGN KEY (`CourseName`) REFERENCES 'course' ('CourseName');
+  ADD FOREIGN KEY (`DepartmentID`) REFERENCES 'Department' ('DepartmentID');
 
 --
 -- AUTO_INCREMENT för dumpade tabeller
