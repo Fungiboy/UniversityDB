@@ -17,3 +17,10 @@ SELECT * FROM departments;
 CALL new_enrolment(9, 'English', CURRENT_DATE);
 
 SELECT * FROM enrolment WHERE Student_ID = 9;
+
+-- Lägga till en ny kurs till en department.
+INSERT INTO course (Course_Name, Professor_ID, Credits, Department_ID, Nr_of_Students)
+VALUES ('course name', 7, 30, 1, 10);
+
+
+SELECT * FROM course;
