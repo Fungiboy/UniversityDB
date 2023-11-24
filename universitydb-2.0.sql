@@ -29,7 +29,6 @@ CREATE TABLE `student` (
   `Student_Name` VARCHAR(30) NOT NULL,
   `Password` VARCHAR(30) NOT NULL,
   `Email` VARCHAR(30) NOT NULL,
-  `Department_name` VARCHAR(30),
   `Enrolment_date` DATE,
   `Total_credits` DECIMAL(3,1),
   PRIMARY KEY (Student_ID)
@@ -44,7 +43,6 @@ CREATE TABLE `student` (
 CREATE TABLE `departments` (
   `Department_ID` INT(11) NOT NULL AUTO_INCREMENT,
   `Department_Name` VARCHAR(31) NOT NULL,
-  `Professor_ID` INT(11) NOT NULL,
   `Number_Of_Courses` INT(11),
   `Head_Professor_ID` INT(11) NOT NULL,
   PRIMARY KEY (Department_ID)
@@ -93,7 +91,6 @@ CREATE TABLE `departmentHead` (
   `Head_Professor_ID` INT(11) NOT NULL,
   `Professor_ID` INT(11) NOT NULL,
   `Department_ID` INT(11) NOT NULL,
-  `Course_Name` VARCHAR(20) NOT NULL
 );
 
 
@@ -103,38 +100,32 @@ CREATE TABLE `departmentHead` (
 -- Index för tabell `enrollment`
 --
 ALTER TABLE `enrolment`
-  ADD FOREIGN KEY (`Student_ID`) REFERENCES `student` (`Student_ID`);
+  ADD FOREIGN KEY (`Student_ID`) REFERENCES `student` (`Student_ID`),
   ADD FOREIGN KEY (`Course_Name`) REFERENCES `course` (`Course_Name`);
 
 --
 -- Index för tabell `professor`
 --
 ALTER TABLE `professor`
-  ADD FOREIGN KEY (`Department_ID`) REFERENCES `Depratments` (`Department_ID`);
---
--- Index för tabell `student`
---
-ALTER TABLE `student`
-  ADD PRIMARY KEY (`Student_ID`);
+  ADD FOREIGN KEY (`Department_ID`) REFERENCES `departments` (`Department_ID`);
 
 --
 -- Index för tabell `departments`
 --
 ALTER TABLE `departments`
-  ADD FOREIGN KEY (`Professor_ID`) REFERENCES `professor` (`Professor_ID`);
+  ADD FOREIGN KEY (`Professor_ID`) REFERENCES `professor` (`Professor_ID`),
   ADD FOREIGN KEY (`Head_Professor_ID`) REFERENCES `departmentHead` (`Head_Professor_ID`);
 
 --
 -- Index för tabell `departmentHead`
 --
 ALTER TABLE `departmentHead`
-  ADD FOREIGN KEY (`Professor_ID`) REFERENCES `professor` (`Professor_ID`);
-  ADD FOREIGN KEY (`Department_ID`) REFERENCES `Department` (`Department_ID`);
-  ADD FOREIGN KEY (`Course_Name`) REFERENCES `course` (`Course_Name`);
+  ADD FOREIGN KEY (`Professor_ID`) REFERENCES `professor` (`Professor_ID`),
+  ADD FOREIGN KEY (`Department_ID`) REFERENCES `departments` (`Department_ID`),
 
 --
 -- Index för tabell `course`
 --
-ALTER TABLE `course2`
-  ADD FOREIGN KEY (`Professor_ID`) REFERENCES `professor` (`Professor_ID`);
-  ADD FOREIGN KEY (`Department_ID`) REFERENCES `deparments` (`Department_ID`);
+ALTER TABLE `course`
+  ADD FOREIGN KEY (`Professor_ID`) REFERENCES `professor` (`Professor_ID`),
+  ADD FOREIGN KEY (`Department_ID`) REFERENCES `departments` (`Department_ID`);
