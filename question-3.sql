@@ -4,6 +4,16 @@ FROM departments
 LEFT JOIN professor ON departments.Department_ID = professor.Department_ID
 GROUP BY departments.Department_ID, departments.Department_Name;
 
+-- Visar vilka kurser en spedifik student tillhör
+CREATE PROCEDURE `get_student_course`(
+    o_Student_ID INT
+)
+BEGIN
+    SELECT Student_ID, Course_Name
+    FROM enrolment
+    WHERE Student_ID = o_Student_ID;
+END;
+
 -- Lista alla kurser som erbjuds av en department.
 SELECT course.Course_Name
 FROM course

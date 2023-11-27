@@ -1,28 +1,40 @@
--- Creates new enrolments
+-- Enroll a new student, fråga 4 och 5
 CREATE PROCEDURE `new_enrolment`(
     o_Student_ID INT,
     o_Course_Name VARCHAR(20),
     o_Enrolment_Date DATE
 )
 BEGIN
-    INSERT INTO `enrolment` (Student_ID, Course_Name, Enrolment_Date)
-    VALUES (o_Student_ID, o_Course_Name, o_Enrolment_Date);
+    DECLARE courseExists INT;
+
+    SELECT COUNT(*) INTO courseExists
+    FROM enrolment
+    WHERE Course_Name = o_Course_Name;
+
+    IF courseExists > 0 THEN
+        INSERT INTO enrolment (Student_ID, Course_Name, Enrolment_Date)
+        VALUES (o_Student_ID, o_Course_Name, o_Enrolment_Date);
+    ELSE
+        SELECT "Error: Course not found!";
+    END IF;
 END;
 
--- Gets what courses a student is enroled in
-CREATE PROCEDURE `get_student_course`(
-    o_Student_ID INT
+-- Promote a new departmentHead, fråga 4 och 5
+CREATE PROCEDURE `get_dep_head`(
+    o_Professor_ID INT,
+    o_Department_ID INT
 )
 BEGIN
-    SELECT Student_ID, Course_Name
-    FROM `enrolment`
-    WHERE Student_ID = o_Student_ID;
-END;
+    DECLARE headExists INT;
 
--- Updates Professor_ID to match the Head_Professor_ID
-CREATE PROCEDURE `update_professorID_to_head_professor` ()
-BEGIN
-    UPDATE departmenthead
-    SET Professor_ID = Head_Professor_ID;
-END;
+    SELECT COUNT(*) INTO headExists
+    FROM professor
+    WHERE Professor_ID = o_Professor_ID;
 
+    IF headExists > 0 THEN
+        UPDATE departmenthead SET Professor_ID = o_Professor_ID WHERE o_Department_ID = Department_ID;
+        UPDATE departmenthead SET Head_Professor_ID = o_Professor_ID WHERE o_Department_ID = Department_ID;
+    ELSE
+        SELECT "Error: Professor not found!";
+    END IF;
+END;

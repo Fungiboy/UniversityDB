@@ -5,10 +5,7 @@ VALUES ('name', 'password', 'email', 3, '2023-04-04');
 SELECT * FROM professor;
 
 -- Tillägger en ny department head.
-UPDATE departmenthead
-SET Head_Professor_ID = 6
-WHERE Department_ID = 1;
-CALL update_professorID_to_head_professor();
+CALL get_dep_head(6,1);
 
 SELECT * FROM departmentHead;
 
