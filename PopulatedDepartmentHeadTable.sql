@@ -1,6 +1,6 @@
-INSERT INTO departmentHead (Head_Professor_ID, Professor_ID, Department_ID)
+INSERT INTO `departmentHead` (Head_Professor_ID, Professor_ID, Department_ID)
 VALUES
-    (7, 7, 1),
-    (8, 8, 2),
-    (9, 9, 3),
-    (10, 10, 4);
+    (1, 1, 1),
+    (2, 2, 2),
+    (3, 3, 3),
+    (4, 4, 4);

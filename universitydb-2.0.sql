@@ -41,10 +41,10 @@ CREATE TABLE `student` (
 --
 
 CREATE TABLE `departments` (
-  `Department_ID` INT(11) NOT NULL AUTO_INCREMENT,
+  `Department_ID` INT(11) NOT NULL,
   `Department_Name` VARCHAR(31) NOT NULL,
   `Number_Of_Courses` INT(11),
-  `Head_Professor_ID` INT(11) NOT NULL,
+  `Head_Professor_ID` INT(11),
   PRIMARY KEY (Department_ID)
 );
 
@@ -91,6 +91,7 @@ CREATE TABLE `departmentHead` (
   `Head_Professor_ID` INT(11) NOT NULL,
   `Professor_ID` INT(11) NOT NULL,
   `Department_ID` INT(11) NOT NULL,
+  PRIMARY KEY (Head_Professor_ID);
 );
 
 
@@ -100,6 +101,7 @@ CREATE TABLE `departmentHead` (
 -- Index för tabell `enrollment`
 --
 ALTER TABLE `enrolment`
+  AUTO_INCREMENT = 1,
   ADD FOREIGN KEY (`Student_ID`) REFERENCES `student` (`Student_ID`),
   ADD FOREIGN KEY (`Course_Name`) REFERENCES `course` (`Course_Name`);
 
@@ -107,13 +109,19 @@ ALTER TABLE `enrolment`
 -- Index för tabell `professor`
 --
 ALTER TABLE `professor`
+  AUTO_INCREMENT = 1,
   ADD FOREIGN KEY (`Department_ID`) REFERENCES `departments` (`Department_ID`);
+
+--
+-- Index för tabell `student`
+--
+ALTER TABLE `student`
+  AUTO_INCREMENT = 1;
 
 --
 -- Index för tabell `departments`
 --
 ALTER TABLE `departments`
-  ADD FOREIGN KEY (`Professor_ID`) REFERENCES `professor` (`Professor_ID`),
   ADD FOREIGN KEY (`Head_Professor_ID`) REFERENCES `departmentHead` (`Head_Professor_ID`);
 
 --
@@ -121,7 +129,7 @@ ALTER TABLE `departments`
 --
 ALTER TABLE `departmentHead`
   ADD FOREIGN KEY (`Professor_ID`) REFERENCES `professor` (`Professor_ID`),
-  ADD FOREIGN KEY (`Department_ID`) REFERENCES `departments` (`Department_ID`),
+  ADD FOREIGN KEY (`Department_ID`) REFERENCES `departments` (`Department_ID`);
 
 --
 -- Index för tabell `course`

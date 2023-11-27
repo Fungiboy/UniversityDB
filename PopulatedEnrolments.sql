@@ -1,3 +1,4 @@
+-- new enrolment: studentID, course_name, enrolment_date
 CALL new_enrolment(1, 'English', '2023-11-09');
 CALL new_enrolment(2, 'Physics', '2023-11-09');
 CALL new_enrolment(2, 'German', '2023-11-09');
