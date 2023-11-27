@@ -16,7 +16,7 @@ WHERE Department_ID = NEW.Department_ID;
 
 -- Updates department table with new head professor
 CREATE TRIGGER `update_head_professor`
-AFTER UPDATE OR INSERT ON departmenthead
+AFTER UPDATE ON departmenthead
 FOR EACH ROW
 UPDATE departments
 SET Head_Professor_ID = NEW.Head_Professor_ID
