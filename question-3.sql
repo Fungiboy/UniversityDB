@@ -7,7 +7,7 @@ GROUP BY departments.Department_ID, departments.Department_Name;
 -- Lista alla kurser som erbjuds av en department.
 SELECT course.Course_Name
 FROM course
-JOIN departments ON course.Department_ID = departments.Departemnt_ID
+JOIN departments ON course.Department_ID = departments.Department_ID
 WHERE departments.Department_Name = 'Science';
 
 -- Visar department head för varje department.
