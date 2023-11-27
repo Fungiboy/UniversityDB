@@ -9,7 +9,7 @@ BEGIN
     VALUES (o_Student_ID, o_Course_Name, o_Enrolment_Date);
 END;
 
--- Gets what courses a student has
+-- Gets what courses a student is enroled in
 CREATE PROCEDURE `get_student_course`(
     o_Student_ID INT
 )
