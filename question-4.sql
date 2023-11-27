@@ -6,7 +6,7 @@ SELECT * FROM professor;
 
 -- Tillägger en ny department head.
 UPDATE departmenthead
-SET Head_Professor_ID = 9
+SET Head_Professor_ID = 6
 WHERE Department_ID = 1;
 CALL update_professorID_to_head_professor();
 

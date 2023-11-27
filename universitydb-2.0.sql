@@ -91,7 +91,7 @@ CREATE TABLE `departmentHead` (
   `Head_Professor_ID` INT(11) NOT NULL,
   `Professor_ID` INT(11) NOT NULL,
   `Department_ID` INT(11) NOT NULL,
-  PRIMARY KEY(Head_Professor_ID)
+  PRIMARY KEY (Head_Professor_ID);
 );
 
 
@@ -122,8 +122,7 @@ ALTER TABLE `student`
 -- Index för tabell `departments`
 --
 ALTER TABLE `departments`
-  ADD FOREIGN KEY (`Head_Professor_ID`) REFERENCES `departmentHead` (`Head_Professor_ID`)
-  DROP CONSTRAINT departments_ibfk_1;
+  ADD FOREIGN KEY (`Head_Professor_ID`) REFERENCES `departmentHead` (`Head_Professor_ID`);
 
 --
 -- Index för tabell `departmentHead`
